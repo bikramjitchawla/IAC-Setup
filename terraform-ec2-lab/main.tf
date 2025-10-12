@@ -5,8 +5,11 @@ resource "aws_vpc" "lab_vpc" {
     }
 }
 
-resource "aws_subnet" "lab_subnet"{
+resource "aws_subnet" "lab_subnet" {
     vpc_id = aws_vpc.lab_vpc.id
+    cidr_block        = "10.0.1.0/24"
+    map_public_ip_on_launch = true
+    availability_zone = "eu-north-1a"
     tags = {
         Name = "terraform-lab-subnet"
     }
@@ -70,7 +73,7 @@ resource "aws_security_group" "lab_sg" {
 }
 
 resource "aws_instance" "lab_instance"{
-    ami =
+    ami = "ami-0d4d7e98021b6b9a6"
     instance_type = var.instance_type
     subnet_id = aws_subnet.lab_subnet.id
     vpc_security_group_ids = [aws_security_group.lab_sg.id]

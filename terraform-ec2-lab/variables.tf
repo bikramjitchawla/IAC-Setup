@@ -1,18 +1,14 @@
 variable "aws_region" {
-    description = "aws REGION TO DEPLOY"
-    default = "eu-central-1"
-
+  description = "AWS region to deploy in"
+  default = "eu-north-1"
 }
 
 variable "instance_type" {
-    description = "Ec2 instance type"
-    default = "t3.micro"
-
+  description = "EC2 instance type"
+  default = "t3.micro"
 }
 
-variable "key_name"{
-    description = "Existing aws key pair"
-    default = "my-keypair"
-
+variable "key_name" {
+  description = "Existing AWS key pair for SSH access"
+  default = "terraform-lab-key"  # Change this to your actual key name
 }
-   
